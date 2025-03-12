@@ -22,6 +22,9 @@ $$
 
 By Ito's Lemma we have:<br />
 $$
+\frac{d S_t}{S_t}=\mu  d t+\sigma  d B_t
+$$
+$$
 d\left(\log S_t\right)=\left(\mu-\frac{\sigma^2}{2}\right)  d t+\sigma  d B_t
 $$
 
