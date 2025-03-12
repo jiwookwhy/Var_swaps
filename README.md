@@ -35,12 +35,12 @@ Integrating we obtain the realized variance over the life of the swap:
 \frac{1}{T} \int_0^T \sigma^2 d t=\frac{2}{T}\left(\int_0^T \frac{d S_t}{S_t}-\ln \left(\frac{S_T}{S_0}\right)\right)
 ```
 
-We see from the right hand side that a variance swap can be perfectly hedged using a short position in two log contracts and a dynamic trading strategy holding $1/S_t$ units of the underlying. Since the dynamic trading strategy has zero cost, the variance swap is priced by the short position in two log contracts. Using the [Carr & Madan (1998)](https://doi.org/10.1111/j.1540-6261.1998.tb03270.x) formula we can obtain the replication for the log contract position. Applying the Carr-Madan formula, we obtain the fair price of variance:
+We see from the right hand side that a variance swap can be perfectly hedged using a short position in two log contracts and a dynamic trading strategy holding $1/S_t$ units of the underlying. Since the dynamic trading strategy has zero cost, the variance swap is priced by the short position in two log contracts. We obtain the fair price of variance as follows:
 ```math
 \mathbb{E}^\mathbb{Q}\left(\frac{1}{T} \int_0^T \sigma^2\right) = -2\mathbb{E}^\mathbb{Q}\left(\log(S_T)\right)=\frac{1}{T} \int_0^T \sigma^2 \, d t=\frac{2}{T}\left(\int_0^T \frac{d S_t}{S_t}-\ln \left(\frac{S_T}{S_0}\right)\right)
 ```
 
-Finally, we can discretizing the integral to obtain a tradable portfolio. This is computation is nearly idnentical to the Chicago Board of Exchange's computation of the VIX Index. 
+Finally, we can discretizing the integral to obtain a tradable portfolio. This is computation is nearly idnentical to the Chicago Board of Exchange's computation of the VIX Index.  Using the [Carr & Madan (1998)](https://doi.org/10.1111/j.1540-6261.1998.tb03270.x) formula we can obtain the replication for the log contract position. Applying the Carr-Madan formula and discretizing, we obtain the tradable replicating portfolio of the log contract position:
 ```math
 \text{Var Swap Price} = 2 e^{r^f \times T} \left[ \sum\limits_{i: K_i < F_t} \dfrac{P(K)}{K_i^2} \dfrac{K_{i+1} - K_{i-1}}{2} + \sum\limits_{i: K_i \geq F_t} \dfrac{C(K_i)}{K_i^2} \dfrac{K_{i+1} - K_{i-1}}{2} \right]
 ```
