@@ -44,11 +44,11 @@ Finally, we can discretizing the integral to obtain a tradable portfolio. This i
 ```math
 \text{Var Swap Price} = 2 e^{r^f \times T} \left[ \sum\limits_{i: K_i < F_t} \dfrac{P(K)}{K_i^2} \dfrac{K_{i+1} - K_{i-1}}{2} + \sum\limits_{i: K_i \geq F_t} \dfrac{C(K_i)}{K_i^2} \dfrac{K_{i+1} - K_{i-1}}{2} \right]
 ```
-
-I use:
-- $F_t$ to denote the $T$-forward price of the underlying asset.
-- $P(K)$ and $C(K)$ to denote the OTM put and call prices with strike $K$ and maturity $T$.
-- $r^f$ is the risk-free rate.
+Notation:
+- $F_t$ denotes the $T$-forward price of the underlying asset.
+- $P(K)$ and $C(K)$ denote the OTM put and call option prices with strike $K$ and maturity $T$.
+- $r^f$ denotes the risk-free rate over the life of the swap.
+- $\mathbb{Q}$ denotes the risk-nuetral measure (pricing measure) and $\mathbb{E}^\mathbb{Q}(\cdot)$ denotes the expectation taken over this measure.
 
 ---
 
