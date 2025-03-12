@@ -21,9 +21,7 @@ $$
 $$
 
 By Ito's Lemma we have:
-$$
-d\left(\log S_t\right)=\left(\mu-\frac{\sigma^2}{2}\right) \, d t+\sigma  d B_t  
-$$
+$$d\left(\log S_t\right)=\left(\mu-\frac{\sigma^2}{2}\right) \, d t+\sigma  d B_t$$
 
 Then the difference of the two stochastic processes gives a drift term purely in terms of the diffusion coefficent $\sigma$:
 \[
