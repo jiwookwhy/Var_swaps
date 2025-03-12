@@ -37,7 +37,7 @@ Integrating we obtain the realized variance over the life of the swap:
 
 We see from the right hand side that a variance swap can be perfectly hedged using a short position in two log contracts and a dynamic trading strategy holding $1/S_t$ units of the underlying. Since the dynamic trading strategy has zero cost, the variance swap is priced by the short position in two log contracts. Using the [Carr & Madan (1998)](https://doi.org/10.1111/j.1540-6261.1998.tb03270.x) formula we can obtain the replication for the log contract position. Applying the Carr-Madan formula, we obtain the fair price of variance:
 ```math
-\mathbb{E}^\mathbb{Q}\left(\frac{1}{T} \int_0^T \sigma^2) = -2\mathbb{E}^\mathbb{Q}\left(\log(S_T)\right)=\frac{1}{T} \int_0^T \sigma^2 \, d t=\frac{2}{T}\left(\int_0^T \frac{d S_t}{S_t}-\ln \left(\frac{S_T}{S_0}\right)\right)
+\mathbb{E}^\mathbb{Q}\left(\frac{1}{T} \int_0^T \sigma^2\right) = -2\mathbb{E}^\mathbb{Q}\left(\log(S_T)\right)=\frac{1}{T} \int_0^T \sigma^2 \, d t=\frac{2}{T}\left(\int_0^T \frac{d S_t}{S_t}-\ln \left(\frac{S_T}{S_0}\right)\right)
 ```
 
 Finally, we can discretizing the integral to obtain a tradable portfolio. This is computation is nearly idnentical to the Chicago Board of Exchange's computation of the VIX Index. 
