@@ -1,8 +1,9 @@
-# Variance Swap Pricing with RL Agents
+## Exotics pricing with RL Agents
+This project aims to develop a training framework for reinforcement learning (RL) agents to price deriatives with exotic payoffs given option prices on the underlying. I apply this framework to the pricing of variance swaps as a proof-of-concept, as it requires a relatively complex replicating portfolio to price in a model-free fashion. 
 
-## Introduction
+## Variance Swaps
 
-A variance swap is a deriative with payoff equal to the realized variance of an underlying asset up to a pre-defined maturity date. This project trains a reinforcement learning (RL) agent to fairly price variance swaps of any maturity given European-style option prices as the underlying asset. The RL agent is trained in the OpenAI gymnasium which provides a standardized API for training reinforcement learning agents. 
+A variance swap is a deriative with payoff equal to the realized variance of an underlying asset up to a pre-defined maturity date. This project trains a RL agent to fairly price variance swaps of any maturity given European-style option prices as the underlying asset. The RL agent is trained in the OpenAI gymnasium which provides a standardized API for training reinforcement learning agents. 
 
 The training routine has the agent learn to play a game where the observed environment consists of a strip of European option prices, strike price and option type (call or put). We know from the work of [Demeterfi et al. (1999)](https://doi.org/10.2307/2677652) that the replicating portfolio can be priced using a portfolio of European-style options. Specifically, this portfolio statically replicates a multiple of a log contract (a European-style payoff equal to the natural algorithm of the underlying at expiration).  
 
