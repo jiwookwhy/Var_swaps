@@ -24,13 +24,13 @@ By Ito's Lemma we have:
 $$
  d\left(\log S_t\right)=\left(\mu-\frac{\sigma^2}{2}\right) \, d t+\sigma \, d Z_t  
 $$
+
 Then the difference of the two stochastic processes gives a drift term purely in terms of the diffusion coefficent $\sigma$:
 $$ 
 \frac{d S_t}{S_t}-d\left(\log S_t\right)=\frac{\sigma^2}{2} \, d t
 $$
 
 Integrating we obtain the realized variance over the life of the swap:
-
 $$
 \frac{1}{T} \int_0^T \sigma^2 \, d t=\frac{2}{T}\left(\int_0^T \frac{d S_t}{S_t}-\ln \left(\frac{S_T}{S_0}\right)\right)
 $$
@@ -39,10 +39,11 @@ We see from the right hand side that a variance swap can be perfectly hedged usi
 $$
 \mathbb{E}^\mathbb{Q}\left(\frac{1}{T} \int_0^T \sigma^2) = -2\mathbb{E}^\mathbb{Q}\left(\log(S_T)\right)=\frac{1}{T} \int_0^T \sigma^2 \, d t=\frac{2}{T}\left(\int_0^T \frac{d S_t}{S_t}-\ln \left(\frac{S_T}{S_0}\right)\right)
 $$
+
 Finally, we can discretizing the integral to obtain a tradable portfolio. This is computation is nearly idnentical to the Chicago Board of Exchange's computation of the VIX Index. 
-\[
+$$
 \text{Var Swap Price} = 2 e^{rf \times T} \left[ \sum\limits_{i: K_i < F_t} \dfrac{P(K)}{K_i^2} \dfrac{K_{i+1} - K_{i-1}}{2} + \sum\limits_{i: K_i \geq F_t} \dfrac{C(K_i)}{K_i^2} \dfrac{K_{i+1} - K_{i-1}}{2} \right]
-\]
+$$
 
 Where:
 - \( F_t \) is the forward price of the underlying asset,
