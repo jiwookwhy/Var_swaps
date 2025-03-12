@@ -17,17 +17,17 @@ The pricing theory section provides an overview of the replication-based pricing
 For expositional purposes, I derive the variance swap replicating portfolio in the context of a simple univariate diffusion process. Let $S_t$ be the price of the underlying asset, $B_t$ denote a Brownian motion, and $T$ be the maturity of the swap. The dynamics of $S_t$ are assumed to be:
 
 $$
-\frac{d S_t}{S_t}=\mu \, d t+\sigma \, d B_t
+\frac{d S_t}{S_t}=\mu \, d t+\sigma  d B_t
 $$
 
 By Ito's Lemma we have:
 $$
- d\left(\log S_t\right)=\left(\mu-\frac{\sigma^2}{2}\right) \, d t+\sigma \, d Z_t  
+ d\left(\log S_t\right)=\left(\mu-\frac{\sigma^2}{2}\right) \, d t+\sigma  d B_t  
 $$
 
 Then the difference of the two stochastic processes gives a drift term purely in terms of the diffusion coefficent $\sigma$:
 $$ 
-\frac{d S_t}{S_t}-d\left(\log S_t\right)=\frac{\sigma^2}{2} \, d t
+\frac{d S_t}{S_t}-d\left(\log S_t\right)=\frac{\sigma^2}{2}  d t
 $$
 
 Integrating we obtain the realized variance over the life of the swap:
