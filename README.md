@@ -22,18 +22,18 @@ $$
 
 By Ito's Lemma we have:
 ```math
-$d\left(\log S_t\right)=\left(\mu-\frac{\sigma^2}{2}\right)  d t+\sigma  d B_t$
+d\left(\log S_t\right)=\left(\mu-\frac{\sigma^2}{2}\right)  d t+\sigma  d B_t
 ```
 
 Then the difference of the two stochastic processes gives a drift term purely in terms of the diffusion coefficent $\sigma$:
-\[
+```math
 d\left(\log S_t\right) = \left(\mu - \frac{\sigma^2}{2}\right) dt + \sigma  d B_t
-\]
+```
 
 Integrating we obtain the realized variance over the life of the swap:
-$$
+```math
 \frac{1}{T} \int_0^T \sigma^2 d t=\frac{2}{T}\left(\int_0^T \frac{d S_t}{S_t}-\ln \left(\frac{S_T}{S_0}\right)\right)
-$$
+```
 
 We see from the right hand side that a variance swap can be perfectly hedged using a short position in two log contracts and a dynamic trading strategy holding $1/S_t$ units of the underlying. Since the dynamic trading strategy has zero cost, the variance swap is priced by the short position in two log contracts. Using the [Carr & Madan (1998)](https://doi.org/10.1111/j.1540-6261.1998.tb03270.x) formula we can obtain the replication for the log contract position. Applying the Carr-Madan formula, we obtain the fair price of variance:
 $$
