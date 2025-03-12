@@ -22,12 +22,12 @@ $$
 
 By Ito's Lemma we have:
 ```math
-d\left(\log S_t\right)=\left(\mu-\frac{\sigma^2}{2}\right)  d t+\sigma  d B_t
+d\left(\ln S_t\right)=\left(\mu-\frac{\sigma^2}{2}\right)  d t+\sigma  d B_t
 ```
 
 Then the difference of the two stochastic processes gives a drift term purely in terms of the diffusion coefficent $\sigma$:
 ```math
-d\left(\log S_t\right) = \left(\mu - \frac{\sigma^2}{2}\right) dt + \sigma  d B_t
+d\left(\ln S_t\right) = \left(\mu - \frac{\sigma^2}{2}\right) dt + \sigma  d B_t
 ```
 
 Integrating we obtain the realized variance over the life of the swap:
@@ -36,21 +36,19 @@ Integrating we obtain the realized variance over the life of the swap:
 ```
 
 We see from the right hand side that a variance swap can be perfectly hedged using a short position in two log contracts and a dynamic trading strategy holding $1/S_t$ units of the underlying. Since the dynamic trading strategy has zero cost, the variance swap is priced by the short position in two log contracts. Using the [Carr & Madan (1998)](https://doi.org/10.1111/j.1540-6261.1998.tb03270.x) formula we can obtain the replication for the log contract position. Applying the Carr-Madan formula, we obtain the fair price of variance:
-$$
+```math
 \mathbb{E}^\mathbb{Q}\left(\frac{1}{T} \int_0^T \sigma^2) = -2\mathbb{E}^\mathbb{Q}\left(\log(S_T)\right)=\frac{1}{T} \int_0^T \sigma^2 \, d t=\frac{2}{T}\left(\int_0^T \frac{d S_t}{S_t}-\ln \left(\frac{S_T}{S_0}\right)\right)
-$$
+```
 
 Finally, we can discretizing the integral to obtain a tradable portfolio. This is computation is nearly idnentical to the Chicago Board of Exchange's computation of the VIX Index. 
-$$
-\text{Var Swap Price} = 2 e^{rf \times T} \left[ \sum\limits_{i: K_i < F_t} \dfrac{P(K)}{K_i^2} \dfrac{K_{i+1} - K_{i-1}}{2} + \sum\limits_{i: K_i \geq F_t} \dfrac{C(K_i)}{K_i^2} \dfrac{K_{i+1} - K_{i-1}}{2} \right]
-$$
+```math
+\text{Var Swap Price} = 2 e^{r^f \times T} \left[ \sum\limits_{i: K_i < F_t} \dfrac{P(K)}{K_i^2} \dfrac{K_{i+1} - K_{i-1}}{2} + \sum\limits_{i: K_i \geq F_t} \dfrac{C(K_i)}{K_i^2} \dfrac{K_{i+1} - K_{i-1}}{2} \right]
+```
 
-Where:
-- \( F_t \) is the forward price of the underlying asset,
-- \( P(K) \) is the price of a put option with strike \( K \),
-- \( C(K) \) is the price of a call option with strike \( K \),
-- \( rf \) is the risk-free rate,
-- \( T \) is the time to maturity.
+I use:
+- $F_t$ to denote the $T$-forward price of the underlying asset.
+- $P(K)$ and $C(K)$ to denote the OTM put and call prices with strike $K$ and maturity $T$.
+- $r^f$ is the risk-free rate.
 
 ---
 
