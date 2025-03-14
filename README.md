@@ -55,15 +55,14 @@ Notation:
 
 ## RL Environment
 
-The model is trained using a RL framework where the agent’s goal is to minimize the discounted sum of its rewards.  The optimization objective is formulated as:
+The model is trained using a RL framework where the agent’s goal is to minimize the discounted sum of its rewards. On each turn $N$, the agent chooses strike to include from the availible OTM strikes that remain unincluded and chooses a weight for that contract. At the end of each turn $N$, a reward $R_N$ is given to the agent based on the replication portfolio consisting of OTM contracts with the selected strikes, $\lbrace K_{i_j}\rbrace_{j=1}^N$, and weights, $\lbrace w_j \rbrace_{j=1}^N$. The reward that turn is equal to the pricing error of the replicating portfolio at the end of that turn.
 
-\[
-\min_{\theta} \sum_{i} \left( y_i - f_{\theta}(x_i) \right)^2
-\]
+```math
+R_N = 2 e^{rf \times T} \left[ \sum\limits_{i_j: K_{i_j} < F_t} \dfrac{P(K)}{K_i^2} \dfrac{K_{i+1} - K_{i-1}}{2} + \sum\limits_{i: K_i \geq F_t} \dfrac{C(K_i)}{K_i^2} \dfrac{K_{i+1} - K_{i-1}}{2} -\mathbb{E}^\mathbb{Q}\left(-2\log(S_t)\right)\right]
+```
 
-where:
-- \( x_i \) represents the input features derived from option data,
-- \( y_i \) is the target variance swap rate,
-- \( \theta \) denotes the model parameters.
-
-This approach allows the agent to learn an optimal pricing strategy through continuous interaction with market data. For more on reinforcement learning fundamentals, refer to [Sutton & Barto (2018)](http://incompleteideas.net/book/the-book-2nd.html).
+Then after the pre-defined number of turns (15 in this use case), we may compute the aggregate reward with discount factor $\gamma \in (0,1)$ which serves as the objective function to maximize in this learning problem:
+```math
+\sum\limits_{j = 1}^{N_{max}} \gamma^j R_j
+```
+where $N_{max}$ is the number of turns to be played in total. This approach allows the agent to learn an optimal static replication for the variance swap through continuous self-play.
